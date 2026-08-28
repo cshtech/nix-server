@@ -14,6 +14,7 @@
     description = "csh";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.fish;
   };
 
 
