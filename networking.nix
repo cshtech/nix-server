@@ -19,7 +19,17 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [
+
+    # SSH Access
+    22
+    # Portainer
+    9443
+    # Immich
+    2283
+
+    
+  ];
 
 
 
