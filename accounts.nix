@@ -15,6 +15,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
+    openssh.authorizedKeys.keyFiles = [
+      ./secrets/authorized_keys
+    ];
   };
 
 

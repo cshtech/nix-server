@@ -14,6 +14,7 @@
       ./packages.nix
       ./accounts.nix
       ./virtualization.nix
+      ./services.nix
     ];
 #
 #  # Bootloader.
