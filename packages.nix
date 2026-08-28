@@ -10,11 +10,17 @@
   
   environment.systemPackages = with pkgs; [
     
-    vim
-    wget
+    # Editors
+    vim helix
+    
+    # Network Utils
+    wget   
  
-    tree
-    unzip
+    # Terminal Utils
+    tree unzip fzf jq fastfetch
+
+    # Rust Utils
+    bat eza fd ripgrep zoxide
 
   ];
 
