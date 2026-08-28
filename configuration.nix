@@ -13,6 +13,7 @@
       ./programs.nix  	
       ./packages.nix
       ./accounts.nix
+      ./virtualization.nix
     ];
 #
 #  # Bootloader.
