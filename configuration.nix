@@ -11,6 +11,8 @@
       ./base-system.nix
       ./networking.nix
       ./programs.nix  	
+      ./packages.nix
+      ./accounts.nix
     ];
 #
 #  # Bootloader.
@@ -63,15 +65,22 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."csh" = {
-    isNormalUser = true;
-    description = "csh";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
+
+#
+#  # Define a user account. Don't forget to set a password with ‘passwd’.
+#  users.users."csh" = {
+#    isNormalUser = true;
+#    description = "csh";
+#    extraGroups = [ "networkmanager" "wheel" ];
+#    packages = with pkgs; [];
+#  };
+#
+#
+#
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -82,13 +91,20 @@
   # programs.fish.enable = true;
   # programs.git.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-     vim wget
-  ];
+
+#
+#
+#  # List packages installed in system profile. To search, run:
+#  # $ nix search wget
+#  environment.systemPackages = with pkgs; [
+#  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+#  #  wget
+#     vim wget
+#  ];
+#
+#
+
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
