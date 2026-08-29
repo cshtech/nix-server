@@ -39,16 +39,23 @@
     81
 
     # goaccess
-    7880 
-    
+    7880
+
+    # WireGuard Vpn
+    # WG-Easy Web UI
+    51821  
   ];
+
+  # WireGuard VPN
+  networking.firewall.allowedUDPPorts = [ 51820 ]; 
+
 
   # Lower the Privileged Port Range in NixOS
   # You need to tell the NixOS kernel that regular users
   # are allowed to bind to ports down to 80.
-  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
+  # boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 
-
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 0; 
 
   # EOF
   ####################################################################################################
