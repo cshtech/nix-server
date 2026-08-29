@@ -25,6 +25,12 @@
 
   virtualisation.containers.registries.search = [ "docker.io" "quay.io" ];
 
-  environment.systemPackages = with pkgs; [ podman-compose ];
+  # encvironment.systemPackages = with pkgs; [ podman-compose ];
+
+  # Added slirp4netns so rootless Podman networking can execute
+  environment.systemPackages = with pkgs; [ 
+    podman-compose 
+    slirp4netns 
+  ];
   
 }
