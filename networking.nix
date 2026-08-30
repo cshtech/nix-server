@@ -21,6 +21,8 @@
 
   networking.firewall.allowedTCPPorts = [
 
+    
+
     # SSH Access
     22
 
@@ -43,7 +45,10 @@
 
     # WireGuard Vpn
     # WG-Easy Web UI
-    51821  
+    51821
+
+    # Caddy
+    8080
   ];
 
   # WireGuard VPN
@@ -55,7 +60,12 @@
   # are allowed to bind to ports down to 80.
   # boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 
-  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 0; 
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 0;
+
+
+  # Force load standard firewall tables needed by rootless network wrappers
+  boot.kernelModules = [ "wireguard" "ip_tables" "iptable_nat" ];
+
 
   # EOF
   ####################################################################################################
