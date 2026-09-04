@@ -4,24 +4,27 @@ let
   hostProjectPath = "/home/csh/projects";
 in
 {
-  # 1. Enable Docker (Fixes the current assertion error)
+  # 1. Enable Docker and open standard networking ports
   virtualisation.docker.enable = true;
-
-  # 2. Open required ports globally on NixOS firewall
   networking.firewall.allowedTCPPorts = [ 80 443 3000 ];
 
-  # 3. Ensure persistent project directories exist for user 'csh'
+  # 2. Maintain your project storage folders on the host
   systemd.tmpfiles.rules = [
     "d ${hostProjectPath} 0755 csh users -"
     "d ${hostProjectPath}/dokploy-backups 0755 csh users -"
   ];
 
-  # 4. Dokploy module configuration
+  # 3. Clean, pure Dokploy module execution
   services.dokploy = {
     enable = true;
     
-    database.passwordFile = "/var/lib/secrets/dokploy-db-password";
-    auth.secretFile = "/var/lib/secrets/dokploy-auth-secret";
-    encryption.keyFile = "/var/lib/secrets/dokploy-encryption-key";
+    # Core system secrets read dynamically at boot time
+    database.passwordFile = "/srv/nixos/nixcfg/secrets/dokploy-db-password";
+    auth.secretFile = "/srv/nixos/nixcfg/secrets/dokploy-auth-secret";
+    encryption.keyFile = "/srv/nixos/nixcfg/secrets/dokploy-encryption-key";
   };
+
+  # 🔐 Runtime Injection: Feeds your Cloudflare credentials straight into the container environment
+  systemd.services.docker-dokploy-init.serviceConfig.EnvironmentFile = "/srv/nixos/nixcfg/secrets/dokploy-cloudflare.env";
+  systemd.services.dokploy-traefik.serviceConfig.EnvironmentFile = "/srv/nixos/nixcfg/secrets/dokploy-cloudflare.env";
 }

@@ -9,9 +9,9 @@
       ./programs.nix  	
       ./packages.nix
       ./accounts.nix
-      # ./virtualization.nix
+      ./virtualization.nix
       ./services.nix
-      ./dokploy.nix
+      # ./dokploy.nix
       
     ];
   # Allow unfree packages
