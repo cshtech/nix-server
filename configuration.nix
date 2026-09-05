@@ -12,6 +12,7 @@
       ./virtualization.nix
       ./services.nix
       # ./dokploy.nix
+      ./k3s.nix
       
     ];
   # Allow unfree packages
