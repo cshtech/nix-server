@@ -16,7 +16,8 @@
     packages = with pkgs; [];
     shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [
-      ./secrets/authorized_keys
+      # ./secrets/authorized_keys
+      ../../secrets/authorized_keys
     ];
   };
 

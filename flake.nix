@@ -16,15 +16,11 @@
         m1 = lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix
-            nix-dokploy.nixosModules.default # <--- This handles the multi-container setup
-         
+            # ./configuration.nix
+            ./hosts/m1/configuration.nix
+            
           ];
-
         };
-
       };
-
     };   
-
 }
