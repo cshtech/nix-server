@@ -18,19 +18,24 @@
       ./hardware-configuration.nix
 
       # Core Modules
-      ../../modules/core/base-system.nix
-      ../../modules/core/networking.nix
-      ../../modules/core/programs.nix
-      ../../modules/core/packages.nix
+      # Modular Bundles (points directly to the folders)
+      ../../modules/core
+      ../../modules/services
+
+      
+      # ../../modules/core/base-system.nix
+      # ../../modules/core/networking.nix
+      # ../../modules/core/programs.nix
+      # ../../modules/core/packages.nix
 
       # User Accounts
       ../../modules/users/accounts.nix
 
       # Services & Virtualization
-      ../../modules/services/virtualization.nix
-      ../../modules/services/services.nix
-      ../../modules/services/k3s.nix
-      # ../../modules/services/dokploy.nix
+      # ../../modules/services/virtualization.nix
+      # ../../modules/services/services.nix
+      # ../../modules/services/k3s.nix
+      # # ../../modules/services/dokploy.nix
       
     ];
   # Allow unfree packages
