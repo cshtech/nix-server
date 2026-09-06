@@ -8,7 +8,7 @@
   services.k3s.extraFlags = toString [
     "--cluster-init"          # Initializes embedded etcd (perfect for single or multi-master control planes)
     "--disable traefik"       # Recommended: Disables default Traefik so you can deploy an ingress later
-    "--disable local-storage" # Optional: Disable if using custom CSI like Longhorn
+    # "--disable local-storage" # Optional: Disable if using custom CSI like Longhorn
   ];
 
   # 2. Open Firewall Ports required for the Control Plane
